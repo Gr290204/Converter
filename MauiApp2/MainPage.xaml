@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Grid Padding="20,30" RowSpacing="20" ColumnSpacing="10">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" /> 
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0"
+                       Text="Конвертер валют" 
+                       FontSize="45" 
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"/>
+  
+                <DatePicker Grid.Row="1"
+                            Grid.Column="2"
+                            Format="MM/dd/yyyy"
+                            FontSize="20"
+                            HorizontalOptions="End"
+                            Date="{Binding SelectedDate}" />
+
+                <Label Grid.Row="2" 
+                       Grid.Column="2"
+                       Text="{Binding SelectedDate, StringFormat='Выбранная дата: {0:d}'}"
+                       FontSize="15"
+                       HorizontalOptions="End"/>
+   
+                <Picker Grid.Row="3"
+                        x:Name="ValutesFirstPicker"
+                        FontSize="20"
+                        ItemsSource="{Binding ValutesList}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedFirstValute}" 
+                        WidthRequest="300"/>
+
+                <Picker Grid.Row="4" 
+                        x:Name="ValutesSecondPicker"
+                        FontSize="20"
+                        ItemsSource="{Binding ValutesList}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedSecondValute}" 
+                        WidthRequest="300"/>
+
+                <Entry Grid.Row="3"
+                       Grid.Column="2"
+                       Placeholder="Enter a value"
+                       VerticalOptions="Center"
+                       FontSize="20"
+                       Text="{Binding ValueInput}"/>
+
+                <Entry Grid.Row="4"
+                       Grid.Column="2"
+                       Text="{Binding ValueOutput}"
+                       FontSize="20"
+                       VerticalOptions="Center"/>
+               
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
